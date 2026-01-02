@@ -3,20 +3,31 @@ package class004;
 
 public class SelectBubbleInsert {
 
-    // 数组中交换i和j位置的数
-    public static void swap(int[] arr, int i, int j) {
-        int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+    /**
+     * @description: 交换
+     * @method swap
+     * @date 2026-01-02 15:56:04
+     * @author Yang Naihua
+     */
+    public static void swap(int[] array, int i, int j) {
+        int temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
     }
 
-    // 选择排序
-    public static void selectionSort(int[] arr) {
+    public static void chooseSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
-        for (int minIndex, i = 0; i < arr.length - 1; i++) {
-            minIndex = i;
+        //后你看到循环边界，可以自问一句：
+        //❓ 这个变量是
+        //	•	“占位置的”（i）
+        //	•	还是“扫全体的”（j）？
+        //
+        //	•	占位置的 → 通常 < n - 1
+        //	•	扫全体的 → 通常 < n
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
             for (int j = i + 1; j < arr.length; j++) {
                 if (arr[j] < arr[minIndex]) {
                     minIndex = j;
@@ -26,30 +37,23 @@ public class SelectBubbleInsert {
         }
     }
 
-    // 冒泡排序
-    public static void bubbleSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
+    public static void bubbleSort(int[] array) {
+        if (array == null || array.length < 2) {
             return;
         }
-        for (int end = arr.length - 1; end > 0; end--) {
+        for (int end = array.length - 1; end > 0; end--) {
             for (int i = 0; i < end; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i + 1);
+                if (array[i] > array[i + 1]) {
+                    swap(array, i, i + 1);
                 }
             }
         }
+
+
     }
 
-    // 插入排序
-    public static void insertionSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
-            return;
-        }
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
-                swap(arr, j, j + 1);
-            }
-        }
+    public static void insertSort() {
+
     }
 
 }

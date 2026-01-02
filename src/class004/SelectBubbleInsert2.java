@@ -1,41 +1,29 @@
 
 package class004;
 
-public class SelectBubbleInsert {
+public class SelectBubbleInsert2 {
 
-    /**
-     * @description: 交换
-     * @method swap
-     * @date 2026-01-02 15:56:04
-     * @author Yang Naihua
-     */
-    public static void swap(int[] array, int i, int j) {
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
+
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 
-    public static void chooseSort(int[] arr) {
-        if (arr == null || arr.length < 2) {
+
+    public static void chooseSort(int[] array) {
+        if (array == null || array.length < 2) {
             return;
         }
-        for (int i = 0; i < arr.length - 1; i++) {
+        for (int i = 0; i < array.length - 1; i++) {
             int minIndex = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIndex]) {
+            for (int j = i + 1; j < array.length; j++) {
+                if (array[j] < array[minIndex]) {
                     minIndex = j;
                 }
             }
-            swap(arr, i, minIndex);
+            swap(array, i, minIndex);
         }
-    }
-
-    public static void bubbleSort() {
-
-    }
-
-    public static void insertSort() {
-
     }
 
 }
