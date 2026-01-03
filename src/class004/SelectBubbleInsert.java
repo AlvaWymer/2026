@@ -48,12 +48,70 @@ public class SelectBubbleInsert {
                 }
             }
         }
-
-
     }
 
-    public static void insertSort() {
-
+    public static void insertSort(int[] array) {
+        if (array == null || array.length <= 1) {
+            return;
+        }
+        for (int i = 1; i < array.length; i++) {
+            for (int j = i - 1; j >= 0 && array[j] > array[j + 1]; j--) {
+                swap(array, j, j + 1);
+            }
+        }
     }
 
+
+    public static void main(String[] args) {
+        // 随机长度
+        int N = 100;
+        int V = 100;
+        int testTimes = 100;
+        System.out.println("--start--");
+        for (int i = 0; i < testTimes; i++) {
+            int length = (int) (Math.random() * N);
+            int[] arr = randomArray(length, V);
+
+            int[] arr1 = copyArray(arr);
+            int[] arr2 = copyArray(arr);
+            int[] arr3 = copyArray(arr);
+            chooseSort(arr1);
+            insertSort(arr2);
+            bubbleSort(arr3);
+            if (!sameArray(arr1, arr2) || !sameArray(arr1, arr3)) {
+                System.err.println("不一致！");
+            }
+
+        }
+        System.out.println("--end--");
+    }
+
+
+    // n是长度，v 是 最大的数，在1-v 中间随机
+    public static int[] randomArray(int n, int v) {
+        int[] result = new int[n];
+        for (int i = 0; i < n; i++) {
+            result[i] = (int) (Math.random() * v) + 1;
+        }
+        return result;
+    }
+
+
+    public static int[] copyArray(int[] array) {
+        int[] result = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            result[i] = array[i];
+        }
+        return result;
+    }
+
+
+    public static boolean sameArray(int[] arrayOne, int[] arrayTwo) {
+        for (int i = 0; i < arrayOne.length; i++) {
+            if (arrayOne[i] != arrayTwo[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
